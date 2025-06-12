@@ -74,7 +74,7 @@ export default function AboutPage() {
             Our practitioners are passionate about holistic health and committed to providing you with exceptional care.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {practitioners.map((practitioner) => (
             <Card key={practitioner.id} className="flex flex-col text-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300">
               <CardHeader className="pt-6">
