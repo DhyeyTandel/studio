@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useState } from 'react';
 import { classesInfo } from '@/lib/data';
@@ -26,8 +27,9 @@ export default function ClassesPage() {
         Icon={CalendarDays}
       />
 
-      <div className="flex flex-col space-y-8 md:space-y-0 md:grid md:grid-cols-3 md:gap-8 md:items-start">
-        <div className="md:col-span-1 space-y-6">
+      <div className="flex flex-col md:flex-row md:gap-8 items-start">
+        {/* Calendar Section */}
+        <div className="w-full md:w-[340px] flex-shrink-0 space-y-6">
           <h2 className="text-2xl font-headline text-primary">Select a Date</h2>
           <Card className="shadow-lg">
             <CardContent className="p-0">
@@ -44,7 +46,8 @@ export default function ClassesPage() {
           </p>
         </div>
 
-        <div className="md:col-span-2 space-y-6">
+        {/* Classes List Section */}
+        <div className="w-full flex-1 space-y-6 mt-8 md:mt-0">
           <h2 className="text-2xl font-headline text-primary">
             {date ? `Classes for ${date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}` : "Upcoming Classes"}
           </h2>
