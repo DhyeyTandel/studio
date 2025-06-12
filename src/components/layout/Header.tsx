@@ -84,15 +84,15 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
-        <Link href="/" className="flex items-center gap-2" onClick={() => setIsSheetOpen(false)}>
+      <div className="container flex h-16 max-w-screen-2xl items-center">
+        <Link href="/" className="flex items-center gap-2 mr-6" onClick={() => setIsSheetOpen(false)}>
           <Leaf className="h-7 w-7 text-primary" />
           <span className="font-headline text-2xl font-semibold text-foreground">
             Aarogyadhama
           </span>
         </Link>
 
-        <nav className="hidden md:flex gap-4 items-center"> {/* Reduced gap slightly for more items */}
+        <nav className="hidden md:flex gap-3 items-center"> {/* Reduced gap from 4 to 3 */}
           {navItems.map((item) => {
             const isActive = isNavItemActive(item, pathname);
             if (item.isDropdown) {
@@ -134,7 +134,7 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="md:hidden">
+        <div className="md:hidden ml-auto"> {/* Added ml-auto here */}
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
