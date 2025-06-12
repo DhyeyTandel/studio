@@ -1,7 +1,7 @@
 
 "use client";
 import Link from 'next/link';
-import { Leaf, Menu, ChevronDown } from 'lucide-react';
+import { Leaf, Menu, ChevronDown, HelpCircle } from 'lucide-react'; // Added HelpCircle for potential future use
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -63,11 +63,10 @@ const navItems: NavItem[] = [
     isDropdown: true,
     items: specialtySubItemsList,
   },
-  { href: '/classes', label: 'Classes' },
   { href: '/recommendations', label: 'Recommendations' },
   { href: '/blog', label: 'Blog' },
   { href: '/testimonials', label: 'Testimonials' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/faq', label: 'FAQ' },
 ];
 
 // Helper function to determine if a dropdown parent or its children are active
