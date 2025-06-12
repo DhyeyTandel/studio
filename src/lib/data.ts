@@ -1,3 +1,4 @@
+
 import type { LucideIcon } from 'lucide-react';
 import { Leaf, Sunrise, Activity, BookOpen, MessageSquare, Users, HeartPulse, ShieldCheck, Brain, Smile, TrendingUp, CalendarDays, MapPin, Mail, Phone, Clock } from 'lucide-react';
 
@@ -29,9 +30,9 @@ export interface BlogPost {
   slug: string;
   title: string;
   author: string;
-  date: string; 
+  date: string;
   excerpt: string;
-  content: string; 
+  content: string;
   image: string;
   dataAiHint: string;
   category: string;
@@ -42,7 +43,7 @@ export interface Testimonial {
   id: string;
   name: string;
   text: string;
-  date: string; 
+  date: string;
   image?: string;
   dataAiHint?: string;
   rating: number; // 1-5 stars
@@ -276,18 +277,35 @@ export const classesInfo: ClassInfo[] = [
   }
 ];
 
-export const founderInfo = {
-  name: "Dr. Alistair Finch",
-  title: "Founder & Chief Wellness Officer",
-  story: "Dr. Alistair Finch founded Aarogyadhama with a vision to create a sanctuary where ancient healing wisdom meets modern understanding of health. With a background in both conventional medicine and extensive studies in naturopathy, Ayurveda, and yoga, Dr. Finch witnessed firsthand the limitations of a purely symptomatic approach to illness. He believed that true well-being arises from addressing the root causes of imbalance and nurturing the body's innate capacity to heal. \n\nAarogyadhama began as a small clinic in 2010, driven by Dr. Finch's passion for personalized, holistic care. His commitment to creating a supportive, educational, and tranquil environment quickly resonated with the community. Over the years, the center has grown, attracting a team of like-minded practitioners dedicated to empowering individuals on their unique paths to health and vitality. Our philosophy remains rooted in Dr. Finch's original principles: respect for nature, individualized care, and the harmonious integration of mind, body, and spirit.",
-  image: "https://placehold.co/400x400.png",
-  dataAiHint: "founder portrait wise"
+export const aarogyadhamaStory = {
+  content: "Aarogyadhama was founded with a vision to create a sanctuary where ancient healing wisdom meets modern understanding of health. Our founders, Dr. R Nagarathana and Padmashri Dr. H R Nagendra, envisioned a place driven by a passion for personalized, holistic care. The commitment from the outset has been to create a supportive, educational, and tranquil environment, which quickly resonated with the community. \n\nSince its inception, Aarogyadhama has grown, attracting a team of like-minded practitioners dedicated to empowering individuals on their unique paths to health and vitality. Our philosophy remains rooted in the founding principles: respect for nature, individualized care, and the harmonious integration of mind, body, and spirit.",
+  image: "https://placehold.co/600x400.png",
+  dataAiHint: "serene wellness center"
 };
+
+export const founders = [
+  {
+    id: 'dr-r-nagarathana',
+    name: 'Dr. R Nagarathana MBBS, MD, FRCP(UK)',
+    title: 'Medical Director & Founder',
+    image: 'https://placehold.co/300x300.png',
+    dataAiHint: 'doctor portrait female',
+  },
+  {
+    id: 'dr-hr-nagendra',
+    name: 'Padmashri Dr. H R Nagendra',
+    title: 'Chancellor of the Foundation & Founder',
+    image: 'https://placehold.co/300x300.png',
+    dataAiHint: 'chancellor portrait male',
+  }
+];
 
 export const contactDetails = {
   address: "123 Wellness Lane, Harmony City, HC 54321",
   phone: "(555) 123-4567",
-  email: "connect@naturopathicharmony.com",
+  email: "connect@aarogyadhama.com", // Updated email
   mapImage: "https://placehold.co/800x400.png",
   mapDataAiHint: "map location city"
 };
+
+    

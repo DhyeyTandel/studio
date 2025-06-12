@@ -1,8 +1,9 @@
+
 import Image from 'next/image';
-import { founderInfo, practitioners } from '@/lib/data';
+import { aarogyadhamaStory, founders, practitioners } from '@/lib/data';
 import PageHeader from '@/components/shared/PageHeader';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Users, Award, BookHeart } from 'lucide-react'; // Changed Leaf to Award
+import { Users, Award, BookHeart } from 'lucide-react';
 
 export default function AboutPage() {
   return (
@@ -13,22 +14,54 @@ export default function AboutPage() {
         Icon={BookHeart}
       />
 
-      <section className="grid md:grid-cols-5 gap-8 items-center">
-        <div className="md:col-span-2">
-          <Image
-            src={founderInfo.image}
-            alt={founderInfo.name}
-            width={400}
-            height={400}
-            className="rounded-lg shadow-xl mx-auto object-cover aspect-square"
-            data-ai-hint={founderInfo.dataAiHint}
-          />
+      <section className="mb-12">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="md:order-last">
+            <Image
+              src={aarogyadhamaStory.image}
+              alt="Aarogyadhama Center"
+              width={600}
+              height={400}
+              className="rounded-lg shadow-xl mx-auto object-cover aspect-[3/2]"
+              data-ai-hint={aarogyadhamaStory.dataAiHint}
+            />
+          </div>
+          <div>
+            {aarogyadhamaStory.content.split('\n\n').map((paragraph, index) => (
+              <p key={index} className="text-foreground/80 mb-4 leading-relaxed">{paragraph}</p>
+            ))}
+          </div>
         </div>
-        <div className="md:col-span-3">
-          <h2 className="text-3xl font-headline text-primary mb-4">{founderInfo.name}</h2>
-          <h3 className="text-xl font-semibold text-accent mb-4">{founderInfo.title}</h3>
-          {founderInfo.story.split('\n\n').map((paragraph, index) => (
-            <p key={index} className="text-foreground/80 mb-4 leading-relaxed">{paragraph}</p>
+      </section>
+
+      <section className="mb-16">
+        <div className="text-center mb-12">
+          <Users className="h-16 w-16 text-primary mx-auto mb-4" />
+          <h2 className="text-4xl font-headline text-primary mb-4">Meet Our Founders</h2>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {founders.map((founder) => (
+            <Card key={founder.id} className="flex flex-col text-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <CardHeader className="pt-6">
+                <Image
+                  src={founder.image}
+                  alt={founder.name}
+                  width={150}
+                  height={150}
+                  className="rounded-full object-cover mx-auto mb-4 border-4 border-primary/20"
+                  data-ai-hint={founder.dataAiHint}
+                />
+                <CardTitle className="text-2xl font-headline text-primary">{founder.name}</CardTitle>
+                <CardDescription className="text-accent font-semibold">{founder.title}</CardDescription>
+              </CardHeader>
+              {/* Future placeholder for bio if needed
+              {founder.bio && (
+                <CardContent className="flex-grow">
+                  <p className="text-sm text-foreground/70 leading-relaxed px-2">{founder.bio}</p>
+                </CardContent>
+              )}
+              */}
+            </Card>
           ))}
         </div>
       </section>
@@ -88,3 +121,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    
