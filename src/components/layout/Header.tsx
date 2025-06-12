@@ -54,10 +54,23 @@ const specialtySubItemsList: Array<{ href: string; label: string }> = [
   { label: 'Promotion of positive health (PPH)', href: '/specialty/pph' },
 ];
 
+const healthPackagesSubItemsList: Array<{ href: string; label: string }> = [
+  { label: 'Health Packages', href: '/health-packages' },
+  { label: 'Book Now', href: '/health-packages/book-now' },
+  { label: 'Tariff', href: '/health-packages/tariff' },
+  { label: 'Rules And Regulation', href: '/health-packages/rules-and-regulation' },
+  { label: 'Faqs', href: '/health-packages/faq' },
+];
+
 const navItems: NavItem[] = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Us' },
   { href: '/services', label: 'Services' },
+  {
+    label: 'Health Packages',
+    isDropdown: true,
+    items: healthPackagesSubItemsList,
+  },
   {
     label: 'Specialty Integrative Medicine',
     isDropdown: true,
