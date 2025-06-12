@@ -4,13 +4,13 @@
 
 @layer base {
   :root {
-    --background: 145 30% 93%; /* Very Light Soft Minty Green */
+    --background: 130 60% 95%; /* Light Vibrant Green */
     --foreground: 25 30% 25%; /* Dark Brownish Gray */
 
-    --card: 145 30% 88%; /* Slightly darker version of BG */
+    --card: 130 60% 92%; /* Slightly darker version of BG */
     --card-foreground: 25 30% 20%; /* Darker brown for card text */
 
-    --popover: 145 30% 86%; /* Similar to card, slightly darker than card */
+    --popover: 130 60% 90%; /* Similar to card, slightly darker than card */
     --popover-foreground: 25 30% 20%;
 
     --primary: 180 20% 54%; /* Muted Teal */
@@ -19,8 +19,8 @@
     --secondary: 120 73% 65%; /* Natural Green (strong accent) */
     --secondary-foreground: 120 73% 15%; /* Dark Green */
 
-    --muted: 145 20% 83%; /* Muted version of BG (desaturated, darker) */
-    --muted-foreground: 145 10% 45%; /* Darker muted BG green-gray */
+    --muted: 130 50% 88%; /* Muted version of BG (desaturated, darker) */
+    --muted-foreground: 130 30% 55%; /* Darker muted BG green-gray */
 
     --accent: 25 57% 40%; /* Soft Brown */
     --accent-foreground: 25 57% 90%; /* Light brown/beige */
@@ -28,8 +28,8 @@
     --destructive: 0 70% 50%; /* A slightly softer red */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 145 20% 78%; /* Lighter border, BG-toned (desaturated, darker than BG) */
-    --input: 145 25% 90%; /* Input bg, slightly darker/desaturated than BG */
+    --border: 130 50% 85%; /* Lighter border, BG-toned (desaturated, darker than BG) */
+    --input: 130 55% 93%; /* Input bg, slightly darker/desaturated than BG */
     --ring: 180 20% 54%; /* Muted Teal for ring focus */
     
     --radius: 0.5rem;
@@ -42,13 +42,13 @@
     --chart-5: 25 57% 30%;  /* Darker Soft Brown */
 
     /* Sidebar specific theme */
-    --sidebar-background: 145 30% 91%; /* Slightly darker/muted BG green for sidebar */
+    --sidebar-background: 130 60% 93%; /* Slightly darker BG green for sidebar */
     --sidebar-foreground: 25 30% 20%; /* Dark Brown for sidebar text */
     --sidebar-primary: 180 20% 54%; /* Muted Teal */
     --sidebar-primary-foreground: 180 20% 95%; /* Light teal/white */
     --sidebar-accent: 25 57% 45%; /* Slightly lighter Soft Brown for sidebar accent */
     --sidebar-accent-foreground: 25 57% 90%; /* Light brown/beige for sidebar accent text */
-    --sidebar-border: 145 20% 73%; /* BG-toned border for sidebar (darker than main border) */
+    --sidebar-border: 130 50% 80%; /* BG-toned border for sidebar (darker than main border) */
     --sidebar-ring: 180 20% 54%; /* Muted Teal for sidebar ring */
   }
 
