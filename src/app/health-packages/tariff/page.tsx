@@ -2,7 +2,94 @@
 import PageHeader from '@/components/shared/PageHeader';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import { Receipt, IndianRupee, Globe } from 'lucide-react';
+
+interface TariffPackage {
+  name: string;
+  days: string;
+  charges: (number | string)[];
+  bulletColor: 'red' | 'green' | 'blue' | 'yellow';
+}
+
+interface TariffTableProps {
+  title: string;
+  packages: TariffPackage[];
+  bookNowLink?: string;
+}
+
+const TariffTable: React.FC<TariffTableProps> = ({ title, packages, bookNowLink = "/health-packages/book-now" }) => {
+  const getBulletColorClass = (color: string) => {
+    switch (color) {
+      case 'red': return 'bg-red-500';
+      case 'green': return 'bg-green-500';
+      case 'blue': return 'bg-blue-500';
+      case 'yellow': return 'bg-yellow-500';
+      default: return 'bg-gray-500';
+    }
+  };
+
+  return (
+    <div className="mb-10 shadow-lg rounded-lg overflow-hidden border border-primary/20">
+      <div className="flex justify-between items-center bg-primary text-primary-foreground p-3">
+        <h4 className="text-md sm:text-lg font-semibold">{title}</h4>
+        <Button asChild size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground text-xs sm:text-sm px-2 sm:px-3">
+          <Link href={bookNowLink}>Book Now</Link>
+        </Button>
+      </div>
+      
+      <div className="text-xs sm:text-sm overflow-x-auto">
+        {/* Header Row */}
+        <div className="grid grid-cols-[minmax(200px,_2fr)_minmax(60px,_auto)_repeat(4,_minmax(80px,_1fr))] bg-muted/70 font-semibold border-b border-primary/20 whitespace-nowrap">
+          <div className="p-2 border-r border-primary/20">Packages / Programs</div>
+          <div className="p-2 border-r border-primary/20 text-center">Day's</div>
+          <div className="p-2 border-r border-primary/20 text-center">1st Week in INR</div>
+          <div className="p-2 border-r border-primary/20 text-center">2 Week's in INR</div>
+          <div className="p-2 border-r border-primary/20 text-center">3 Week's in INR</div>
+          <div className="p-2 text-center">4 Week's in INR</div>
+        </div>
+
+        {/* Package Rows */}
+        {packages.map((pkg, index) => (
+          <div 
+            key={index} 
+            className={`grid grid-cols-[minmax(200px,_2fr)_minmax(60px,_auto)_repeat(4,_minmax(80px,_1fr))] items-start sm:items-center 
+                        ${index < packages.length - 1 ? 'border-b border-primary/10' : ''} 
+                        ${index % 2 === 0 ? 'bg-background' : 'bg-card/30'}`}
+          >
+            <div className={`p-2 border-r border-primary/10 flex items-start sm:items-center`}>
+              <span className={`mr-2 mt-1 sm:mt-0 w-2 h-2 rounded-full flex-shrink-0 ${getBulletColorClass(pkg.bulletColor)}`}></span>
+              <span>{pkg.name}</span>
+            </div>
+            <div className="p-2 border-r border-primary/10 text-center whitespace-nowrap">{pkg.days}</div>
+            <div className="p-2 border-r border-primary/10 text-center">{pkg.charges[0]}</div>
+            <div className="p-2 border-r border-primary/10 text-center">{pkg.charges[1]}</div>
+            <div className="p-2 border-r border-primary/10 text-center">{pkg.charges[2]}</div>
+            <div className="p-2 text-center">{pkg.charges[3]}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const dormitoryPackages: TariffPackage[] = [
+  { name: "including food, lodging, and yoga therapy Doctor consultation Also included is a yoga kit", days: "6 Night's", charges: [6600, 12200, 17800, 23400], bulletColor: 'red' },
+  { name: "Naturopathy, Ayurveda, Per week per person / Category 1", days: "6 Day's", charges: [4000, 8000, 12000, 16000], bulletColor: 'green' },
+  { name: "Naturopathy, Ayurveda, Per week per person / Category 2", days: "6 Day's", charges: [6000, 12000, 18000, 24000], bulletColor: 'green' },
+  { name: "Physiotherapy, Acupuncture, per week per person / Category 1", days: "6 Day's", charges: [3000, 6000, 9000, 12000], bulletColor: 'blue' },
+  { name: "Physiotherapy, Acupuncture, per week per person / Category 2", days: "6 Day's", charges: [4000, 8000, 12000, 16000], bulletColor: 'yellow' },
+];
+
+const singleAshirwadPackages: TariffPackage[] = [
+  { name: "including food, lodging, and yoga therapy Doctor consultation Also included is a yoga kit", days: "6 Night's", charges: [13200, 25400, 37600, 49800], bulletColor: 'red' },
+  { name: "Naturopathy, Ayurveda, Per week per person / Category 1", days: "6 Day's", charges: [4000, 8000, 12000, 16000], bulletColor: 'green' },
+  { name: "Naturopathy, Ayurveda, Per week per person / Category 2", days: "6 Day's", charges: [6000, 12000, 18000, 24000], bulletColor: 'green' },
+  { name: "Physiotherapy, Acupuncture, per week per person / Category 1", days: "6 Day's", charges: [3000, 6000, 9000, 12000], bulletColor: 'blue' },
+  { name: "Physiotherapy, Acupuncture, per week per person / Category 2", days: "6 Day's", charges: [4000, 8000, 12000, 16000], bulletColor: 'yellow' },
+];
+
 
 export default function TariffPage() {
   return (
@@ -13,7 +100,7 @@ export default function TariffPage() {
         Icon={Receipt}
       />
 
-      <section className="max-w-4xl mx-auto">
+      <section className="max-w-6xl mx-auto"> {/* Increased max-width for wider tables */}
         <Tabs defaultValue="indian" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="indian">
@@ -24,114 +111,36 @@ export default function TariffPage() {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="indian" className="mt-6">
-            <Card className="shadow-lg">
-              <CardHeader>
-                <CardTitle className="text-2xl font-headline text-primary flex items-center">
-                  <IndianRupee className="mr-2 h-6 w-6" />
-                  Tariffs for Indian Nationals
-                </CardTitle>
-                <CardDescription>
-                  Effective from Tuesday to Monday. Inclusive of accommodation, meals, consultations, and yoga therapy.
-                  Special treatments may be extra. Minimum 6 nights stay. Prices per person.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <h3 className="text-xl font-headline text-accent mb-3">General Information</h3>
-                  <ul className="list-disc list-inside space-y-1.5 text-foreground/80 text-sm">
-                    <li>The tariff is from Tuesday to Monday.</li>
-                    <li>Inclusive of accommodation, meals, consultations, and yoga therapy charges.</li>
-                    <li>A few personal and special treatments, however, are on a chargeable basis.</li>
-                    <li>The minimum duration of stay is six (6) nights as Arogyadhama is result-oriented and committed to helping individuals achieve specific health and healing objectives.</li>
-                    <li>The tariff mentioned is charged per person.</li>
-                    <li>Bill Settlement is done one day before the discharge date.</li>
-                    <li>Dormitory/Pushpa/Ashwini charges are mentioned per person.</li>
-                  </ul>
-                </div>
+            <div className="space-y-6">
+              <div>
+                <CardHeader className="px-0 pt-0">
+                  <CardTitle className="text-2xl font-headline text-primary flex items-center">
+                    <IndianRupee className="mr-2 h-6 w-6" />
+                    Tariffs for Indian Nationals
+                  </CardTitle>
+                  <CardDescription>
+                    Effective from Tuesday to Monday. Inclusive of accommodation, meals, consultations, and yoga therapy.
+                    Special treatments may be extra. Minimum 6 nights stay. Prices per person.
+                  </CardDescription>
+                </CardHeader>
+                <ul className="list-disc list-inside space-y-1.5 text-foreground/80 text-sm mb-8 bg-card/30 p-4 rounded-md">
+                  <li>The tariff is from Tuesday to Monday.</li>
+                  <li>Inclusive of accommodation, meals, consultations, and yoga therapy charges.</li>
+                  <li>A few personal and special treatments, however, are on a chargeable basis.</li>
+                  <li>The minimum duration of stay is six (6) nights as Arogyadhama is result-oriented and committed to helping individuals achieve specific health and healing objectives.</li>
+                  <li>The tariff mentioned is charged per person.</li>
+                  <li>Bill Settlement is done one day before the discharge date.</li>
+                  <li>Dormitory/Pushpa/Ashwini charges are mentioned per person.</li>
+                </ul>
+              </div>
 
-                <div>
-                  <h3 className="text-xl font-headline text-accent mb-4">Package Program Charges (INR)</h3>
-
-                  <Card className="mb-4 bg-card/70 border-primary/20">
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-lg font-semibold text-primary">General Wellness Package (Dormitory/Pushpa/Ashwini)</CardTitle>
-                      <CardDescription className="text-xs">Includes food, lodging, yoga therapy, doctor consultation, and a yoga kit. Charges per person.</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-                        <div><strong>1st Week (6 Nights):</strong><br /> ₹6,600</div>
-                        <div><strong>2 Weeks:</strong><br /> ₹12,200</div>
-                        <div><strong>3 Weeks:</strong><br /> ₹17,800</div>
-                        <div><strong>4 Weeks:</strong><br /> ₹23,400</div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="mb-4 bg-card/70 border-primary/20">
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-lg font-semibold text-primary">Naturopathy & Ayurveda - Category 1</CardTitle>
-                      <CardDescription className="text-xs">Per week per person. Minimum 6 days.</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-                        <div><strong>1 Week (6 Days):</strong><br /> ₹4,000</div>
-                        <div><strong>2 Weeks:</strong><br /> ₹8,000</div>
-                        <div><strong>3 Weeks:</strong><br /> ₹12,000</div>
-                        <div><strong>4 Weeks:</strong><br /> ₹16,000</div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="mb-4 bg-card/70 border-primary/20">
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-lg font-semibold text-primary">Naturopathy & Ayurveda - Category 2</CardTitle>
-                      <CardDescription className="text-xs">Per week per person. Minimum 6 days.</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-                        <div><strong>1 Week (6 Days):</strong><br /> ₹6,000</div>
-                        <div><strong>2 Weeks:</strong><br /> ₹12,000</div>
-                        <div><strong>3 Weeks:</strong><br /> ₹18,000</div>
-                        <div><strong>4 Weeks:</strong><br /> ₹24,000</div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="mb-4 bg-card/70 border-primary/20">
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-lg font-semibold text-primary">Physiotherapy & Acupuncture - Category 1</CardTitle>
-                      <CardDescription className="text-xs">Per week per person. Minimum 6 days.</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-                        <div><strong>1 Week (6 Days):</strong><br /> ₹3,000</div>
-                        <div><strong>2 Weeks:</strong><br /> ₹6,000</div>
-                        <div><strong>3 Weeks:</strong><br /> ₹9,000</div>
-                        <div><strong>4 Weeks:</strong><br /> ₹12,000</div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="bg-card/70 border-primary/20">
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-lg font-semibold text-primary">Physiotherapy & Acupuncture - Category 2</CardTitle>
-                      <CardDescription className="text-xs">Per week per person. Minimum 6 days.</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-                        <div><strong>1 Week (6 Days):</strong><br /> ₹4,000</div>
-                        <div><strong>2 Weeks:</strong><br /> ₹8,000</div>
-                        <div><strong>3 Weeks:</strong><br /> ₹12,000</div>
-                        <div><strong>4 Weeks:</strong><br /> ₹16,000</div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-                <p className="text-muted-foreground text-xs italic mt-8">
-                  Please contact us for the most up-to-date information and for any custom package inquiries.
-                </p>
-              </CardContent>
-            </Card>
+              <TariffTable title="Dormitory/ Pushpa/Ashwini - Charges mentioned per person" packages={dormitoryPackages} />
+              <TariffTable title="Single/ Ashirwad - Charges mentioned per person" packages={singleAshirwadPackages} />
+              
+              <p className="text-muted-foreground text-xs italic mt-8 text-center">
+                Please contact us for the most up-to-date information and for any custom package inquiries.
+              </p>
+            </div>
           </TabsContent>
           <TabsContent value="international" className="mt-6">
             <Card className="shadow-lg">
@@ -166,15 +175,14 @@ export default function TariffPage() {
           For detailed information on package inclusions, availability, and to make a booking, please visit our 'Book Now' page or contact our guest services team.
         </p>
         <div className="space-x-4">
-          <a href="/health-packages/book-now" className="inline-block px-6 py-3 rounded-md bg-accent text-accent-foreground font-semibold shadow hover:bg-accent/90 transition-colors">
-            Book a Package
-          </a>
-          <a href="/contact" className="inline-block px-6 py-3 rounded-md bg-secondary text-secondary-foreground font-semibold shadow hover:bg-secondary/90 transition-colors">
-            Contact Us
-          </a>
+          <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow transition-colors">
+            <Link href="/health-packages/book-now">Book a Package</Link>
+          </Button>
+          <Button asChild className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold shadow transition-colors">
+            <Link href="/contact">Contact Us</Link>
+          </Button>
         </div>
       </section>
     </div>
   );
 }
-
