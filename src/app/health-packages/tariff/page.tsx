@@ -90,8 +90,25 @@ const singleAshirwadPackages: TariffPackage[] = [
   { name: "Physiotherapy, Acupuncture, per week per person / Category 2", days: "6 Day's", charges: [4000, 8000, 12000, 16000], bulletColor: 'yellow' },
 ];
 
+const doubleSharingMaitriPackages: TariffPackage[] = [
+  { name: "including food, lodging, and yoga therapy Doctor consultation Also included is a yoga kit", days: "6 Night's", charges: [11000, 21000, 31000, 41000], bulletColor: 'red' },
+  { name: "Naturopathy, Ayurveda, Per week per person / Category 1", days: "6 Day's", charges: [4000, 8000, 12000, 16000], bulletColor: 'green' },
+  { name: "Naturopathy, Ayurveda, Per week per person / Category 2", days: "6 Day's", charges: [6000, 12000, 18000, 24000], bulletColor: 'green' },
+  { name: "Physiotherapy, Acupuncture, per week per person / Category 1", days: "6 Day's", charges: [3000, 6000, 9000, 12000], bulletColor: 'blue' },
+  { name: "Physiotherapy, Acupuncture, per week per person / Category 2", days: "6 Day's", charges: [4000, 8000, 12000, 16000], bulletColor: 'yellow' },
+];
+
+const singleDeluxeSheshadriBhavanPackages: TariffPackage[] = [
+  { name: "including food, lodging, and yoga therapy Doctor consultation Also included is a yoga kit", days: "6 Night's", charges: [27500, 54000, 80500, 107000], bulletColor: 'red' },
+  { name: "Naturopathy, Ayurveda, Per week per person / Category 1", days: "6 Day's", charges: [4000, 8000, 12000, 16000], bulletColor: 'green' },
+  { name: "Naturopathy, Ayurveda, Per week per person / Category 2", days: "6 Day's", charges: [6000, 12000, 18000, 24000], bulletColor: 'green' },
+  { name: "Physiotherapy, Acupuncture, per week per person / Category 1", days: "6 Day's", charges: [3000, 6000, 9000, 12000], bulletColor: 'blue' },
+  { name: "Physiotherapy, Acupuncture, per week per person / Category 2", days: "6 Day's", charges: [4000, 8000, 12000, 16000], bulletColor: 'yellow' },
+];
+
 
 export default function TariffPage() {
+  const sharingNote = "Double or Triple Sharing is applicable only when you come with your sharing partner ( Sharing is not decided from the Institute) or Pay the charges by your self";
   return (
     <div className="space-y-12">
       <PageHeader
@@ -136,6 +153,11 @@ export default function TariffPage() {
 
               <TariffTable title="Dormitory/ Pushpa/Ashwini - Charges mentioned per person" packages={dormitoryPackages} />
               <TariffTable title="Single/ Ashirwad - Charges mentioned per person" packages={singleAshirwadPackages} />
+              
+              <p className="text-foreground/80 text-sm mb-4">{sharingNote}</p>
+              <TariffTable title="Double Sharing / Maitri - Charges mentioned per person" packages={doubleSharingMaitriPackages} />
+              <TariffTable title="Single Deluxe / Sheshadri Bhavan - Charges mentioned per person" packages={singleDeluxeSheshadriBhavanPackages} />
+              <p className="text-foreground/80 text-sm mt-4 mb-8">{sharingNote}</p>
               
               <p className="text-muted-foreground text-xs italic mt-8 text-center">
                 Please contact us for the most up-to-date information and for any custom package inquiries.
