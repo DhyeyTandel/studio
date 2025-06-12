@@ -31,17 +31,103 @@ export default function TariffPage() {
                   Tariffs for Indian Nationals
                 </CardTitle>
                 <CardDescription>
-                  Detailed pricing for our comprehensive health packages, specially for Indian residents.
+                  Effective from Tuesday to Monday. Inclusive of accommodation, meals, consultations, and yoga therapy.
+                  Special treatments may be extra. Minimum 6 nights stay. Prices per person.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-foreground/80">
-                  The specific tariff details for Indian nationals will be listed here. This section will include package names, durations, inclusions, and prices in INR.
-                </p>
-                <p className="text-muted-foreground text-sm">
-                  (Example: Package A - 7 Days Wellness Retreat - ₹XX,XXX)
-                </p>
-                <p className="text-muted-foreground text-sm">
+              <CardContent className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-headline text-accent mb-3">General Information</h3>
+                  <ul className="list-disc list-inside space-y-1.5 text-foreground/80 text-sm">
+                    <li>The tariff is from Tuesday to Monday.</li>
+                    <li>Inclusive of accommodation, meals, consultations, and yoga therapy charges.</li>
+                    <li>A few personal and special treatments, however, are on a chargeable basis.</li>
+                    <li>The minimum duration of stay is six (6) nights as Arogyadhama is result-oriented and committed to helping individuals achieve specific health and healing objectives.</li>
+                    <li>The tariff mentioned is charged per person.</li>
+                    <li>Bill Settlement is done one day before the discharge date.</li>
+                    <li>Dormitory/Pushpa/Ashwini charges are mentioned per person.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-headline text-accent mb-4">Package Program Charges (INR)</h3>
+
+                  <Card className="mb-4 bg-card/70 border-primary/20">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-lg font-semibold text-primary">General Wellness Package (Dormitory/Pushpa/Ashwini)</CardTitle>
+                      <CardDescription className="text-xs">Includes food, lodging, yoga therapy, doctor consultation, and a yoga kit. Charges per person.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                        <div><strong>1st Week (6 Nights):</strong><br /> ₹6,600</div>
+                        <div><strong>2 Weeks:</strong><br /> ₹12,200</div>
+                        <div><strong>3 Weeks:</strong><br /> ₹17,800</div>
+                        <div><strong>4 Weeks:</strong><br /> ₹23,400</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="mb-4 bg-card/70 border-primary/20">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-lg font-semibold text-primary">Naturopathy & Ayurveda - Category 1</CardTitle>
+                      <CardDescription className="text-xs">Per week per person. Minimum 6 days.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                        <div><strong>1 Week (6 Days):</strong><br /> ₹4,000</div>
+                        <div><strong>2 Weeks:</strong><br /> ₹8,000</div>
+                        <div><strong>3 Weeks:</strong><br /> ₹12,000</div>
+                        <div><strong>4 Weeks:</strong><br /> ₹16,000</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="mb-4 bg-card/70 border-primary/20">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-lg font-semibold text-primary">Naturopathy & Ayurveda - Category 2</CardTitle>
+                      <CardDescription className="text-xs">Per week per person. Minimum 6 days.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                        <div><strong>1 Week (6 Days):</strong><br /> ₹6,000</div>
+                        <div><strong>2 Weeks:</strong><br /> ₹12,000</div>
+                        <div><strong>3 Weeks:</strong><br /> ₹18,000</div>
+                        <div><strong>4 Weeks:</strong><br /> ₹24,000</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="mb-4 bg-card/70 border-primary/20">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-lg font-semibold text-primary">Physiotherapy & Acupuncture - Category 1</CardTitle>
+                      <CardDescription className="text-xs">Per week per person. Minimum 6 days.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                        <div><strong>1 Week (6 Days):</strong><br /> ₹3,000</div>
+                        <div><strong>2 Weeks:</strong><br /> ₹6,000</div>
+                        <div><strong>3 Weeks:</strong><br /> ₹9,000</div>
+                        <div><strong>4 Weeks:</strong><br /> ₹12,000</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="bg-card/70 border-primary/20">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-lg font-semibold text-primary">Physiotherapy & Acupuncture - Category 2</CardTitle>
+                      <CardDescription className="text-xs">Per week per person. Minimum 6 days.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                        <div><strong>1 Week (6 Days):</strong><br /> ₹4,000</div>
+                        <div><strong>2 Weeks:</strong><br /> ₹8,000</div>
+                        <div><strong>3 Weeks:</strong><br /> ₹12,000</div>
+                        <div><strong>4 Weeks:</strong><br /> ₹16,000</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+                <p className="text-muted-foreground text-xs italic mt-8">
                   Please contact us for the most up-to-date information and for any custom package inquiries.
                 </p>
               </CardContent>
@@ -91,3 +177,4 @@ export default function TariffPage() {
     </div>
   );
 }
+
