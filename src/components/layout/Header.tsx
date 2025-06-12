@@ -1,7 +1,7 @@
 
 "use client";
 import Link from 'next/link';
-import { Leaf, Menu, ChevronDown, HelpCircle } from 'lucide-react'; // Added HelpCircle for potential future use
+import { Leaf, Menu, ChevronDown, HelpCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -14,6 +14,10 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DropdownMenuPortal,
 } from "@/components/ui/dropdown-menu";
 import {
   Accordion,
@@ -26,21 +30,37 @@ import { cn } from '@/lib/utils';
 import React from 'react';
 
 // Define types for navigation items
-type NavLinkItem = {
+
+interface BaseNavItemConfig {
+  label: string;
+}
+
+interface LinkNavItemConfig extends BaseNavItemConfig {
   href: string;
-  label: string;
   isDropdown?: false;
-};
+  isSubDropdown?: false;
+  items?: never;
+}
 
-type NavDropdownItem = {
-  label: string;
+interface SubDropdownNavItemConfig extends BaseNavItemConfig {
+  isSubDropdown: true;
+  items: LinkNavItemConfig[]; // Sub-dropdowns only contain LinkNavItems
+  href?: never;
+  isDropdown?: false;
+}
+
+type SubNavItem = LinkNavItemConfig | SubDropdownNavItemConfig;
+
+interface DropdownNavItemConfig extends BaseNavItemConfig {
   isDropdown: true;
-  items: Array<{ href: string; label: string }>;
-};
+  items: SubNavItem[];
+  href?: never;
+}
 
-type NavItem = NavLinkItem | NavDropdownItem;
+type NavItemConfig = LinkNavItemConfig | DropdownNavItemConfig;
 
-const specialtySubItemsList: Array<{ href: string; label: string }> = [
+
+const specialtySubItemsList: SubNavItem[] = [
   { label: 'Neurology', href: '/specialty/neurology' },
   { label: 'Oncology', href: '/specialty/oncology' },
   { label: 'Cardiology', href: '/specialty/cardiology' },
@@ -54,15 +74,22 @@ const specialtySubItemsList: Array<{ href: string; label: string }> = [
   { label: 'Promotion of positive health (PPH)', href: '/specialty/pph' },
 ];
 
-const healthPackagesSubItemsList: Array<{ href: string; label: string }> = [
+const healthPackagesSubItemsList: SubNavItem[] = [
   { label: 'Health Packages', href: '/health-packages' },
   { label: 'Book Now', href: '/health-packages/book-now' },
-  { label: 'Tariff', href: '/health-packages/tariff' },
+  {
+    label: 'Tariff',
+    isSubDropdown: true,
+    items: [
+      { label: 'Indian Tariffs', href: '/health-packages/tariff#indian' },
+      { label: 'Non-Indian Tariffs', href: '/health-packages/tariff#international' },
+    ],
+  },
   { label: 'Rules And Regulation', href: '/health-packages/rules-and-regulation' },
   { label: 'Faqs', href: '/health-packages/faq' },
 ];
 
-const navItems: NavItem[] = [
+const navItems: NavItemConfig[] = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Us' },
   { href: '/services', label: 'Services' },
@@ -82,12 +109,20 @@ const navItems: NavItem[] = [
   { href: '/faq', label: 'FAQ' },
 ];
 
-// Helper function to determine if a dropdown parent or its children are active
-const isNavItemActive = (item: NavItem, currentPathname: string): boolean => {
+const isSubItemActive = (items: SubNavItem[], currentPathname: string): boolean => {
+  return items.some(subItem => {
+    if (subItem.isSubDropdown) {
+      return subItem.items.some(subSubItem => currentPathname.startsWith(subSubItem.href));
+    }
+    return !!subItem.href && currentPathname.startsWith(subItem.href);
+  });
+};
+
+const isNavItemActive = (item: NavItemConfig, currentPathname: string): boolean => {
   if (item.isDropdown) {
-    return item.items.some(subItem => currentPathname.startsWith(subItem.href));
+    return isSubItemActive(item.items, currentPathname);
   }
-  return currentPathname === item.href;
+  return !!item.href && currentPathname === item.href;
 };
 
 
@@ -105,7 +140,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex gap-3 items-center"> {/* Reduced gap from 4 to 3 */}
+        <nav className="hidden md:flex gap-3 items-center">
           {navItems.map((item) => {
             const isActive = isNavItemActive(item, pathname);
             if (item.isDropdown) {
@@ -121,13 +156,37 @@ export default function Header() {
                     <ChevronDown className="h-4 w-4 opacity-70" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start">
-                    {item.items.map((subItem) => (
-                      <DropdownMenuItem key={subItem.label} asChild>
-                        <Link href={subItem.href} className={cn(pathname.startsWith(subItem.href) ? "font-semibold text-primary" : "")}>
-                          {subItem.label}
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
+                    {item.items.map((subItem) => {
+                      if (subItem.isSubDropdown) {
+                        return (
+                          <DropdownMenuSub key={subItem.label}>
+                            <DropdownMenuSubTrigger
+                              className={cn(pathname.startsWith(subItem.items[0]?.href.split('#')[0] || '') && isSubItemActive([subItem], pathname) ? "font-semibold text-primary" : "")}
+                            >
+                              {subItem.label}
+                            </DropdownMenuSubTrigger>
+                            <DropdownMenuPortal>
+                              <DropdownMenuSubContent>
+                                {subItem.items.map((subSubItem) => (
+                                  <DropdownMenuItem key={subSubItem.label} asChild>
+                                    <Link href={subSubItem.href} className={cn(pathname.startsWith(subSubItem.href) ? "font-semibold text-primary" : "")}>
+                                      {subSubItem.label}
+                                    </Link>
+                                  </DropdownMenuItem>
+                                ))}
+                              </DropdownMenuSubContent>
+                            </DropdownMenuPortal>
+                          </DropdownMenuSub>
+                        );
+                      }
+                      return (
+                        <DropdownMenuItem key={subItem.label} asChild>
+                          <Link href={subItem.href} className={cn(pathname.startsWith(subItem.href) ? "font-semibold text-primary" : "")}>
+                            {subItem.label}
+                          </Link>
+                        </DropdownMenuItem>
+                      );
+                    })}
                   </DropdownMenuContent>
                 </DropdownMenu>
               );
@@ -147,7 +206,7 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="md:hidden ml-auto"> {/* Added ml-auto here */}
+        <div className="md:hidden ml-auto">
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -179,19 +238,45 @@ export default function Header() {
                           </AccordionTrigger>
                           <AccordionContent className="pt-0 pb-2 pl-4">
                             <div className="flex flex-col gap-3 mt-2">
-                              {item.items.map((subItem) => (
-                                <Link
-                                  key={subItem.label}
-                                  href={subItem.href}
-                                  onClick={() => setIsSheetOpen(false)}
-                                  className={cn(
-                                    "text-base font-medium transition-colors hover:text-primary",
-                                    pathname.startsWith(subItem.href) ? "text-primary" : "text-muted-foreground"
-                                  )}
-                                >
-                                  {subItem.label}
-                                </Link>
-                              ))}
+                              {item.items.map((subItem) => {
+                                if (subItem.isSubDropdown) {
+                                  return (
+                                    <div key={subItem.label} className="flex flex-col gap-2">
+                                      <span className={cn("text-base font-medium", isSubItemActive([subItem], pathname) ? "text-primary" : "text-muted-foreground/80")}>
+                                        {subItem.label}
+                                      </span>
+                                      <div className="flex flex-col gap-2 pl-4">
+                                        {subItem.items.map((subSubItem) => (
+                                          <Link
+                                            key={subSubItem.label}
+                                            href={subSubItem.href}
+                                            onClick={() => setIsSheetOpen(false)}
+                                            className={cn(
+                                              "text-base font-medium transition-colors hover:text-primary",
+                                              pathname.startsWith(subSubItem.href) ? "text-primary" : "text-muted-foreground"
+                                            )}
+                                          >
+                                            {subSubItem.label}
+                                          </Link>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  );
+                                }
+                                return (
+                                  <Link
+                                    key={subItem.label}
+                                    href={subItem.href}
+                                    onClick={() => setIsSheetOpen(false)}
+                                    className={cn(
+                                      "text-base font-medium transition-colors hover:text-primary",
+                                      pathname.startsWith(subItem.href) ? "text-primary" : "text-muted-foreground"
+                                    )}
+                                  >
+                                    {subItem.label}
+                                  </Link>
+                                );
+                              })}
                             </div>
                           </AccordionContent>
                         </AccordionItem>
