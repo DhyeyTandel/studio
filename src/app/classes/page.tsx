@@ -1,5 +1,5 @@
 "use client";
-import React, { useState }_from 'react';
+import React, { useState } from 'react';
 import { classesInfo } from '@/lib/data';
 import PageHeader from '@/components/shared/PageHeader';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -77,7 +77,7 @@ export default function ClassesPage() {
                   </CardContent>
                   <CardFooter>
                     <Button variant="default" className="bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
-                      <Link href="/contact?class=${cls.id}">Request to Book</Link>
+                      <Link href={`/contact?class=${cls.id}`}>Request to Book</Link>
                     </Button>
                   </CardFooter>
                 </div>
