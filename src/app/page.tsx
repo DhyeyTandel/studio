@@ -12,7 +12,7 @@ export default function HomePage() {
   return (
     <div className="space-y-16">
       <HeroSection
-        title="Welcome to Naturopathic Harmony"
+        title="Welcome to Aarogyadhama"
         subtitle="Your sanctuary for holistic wellness, integrating ancient wisdom with modern understanding to nurture your mind, body, and spirit."
         imageUrl="https://placehold.co/1920x1080.png"
         imageAlt="Serene natural landscape"
@@ -26,7 +26,7 @@ export default function HomePage() {
           <Leaf className="h-16 w-16 text-primary mx-auto mb-4" />
           <h2 className="text-4xl font-headline text-primary mb-4">Discover Your Path to Wellness</h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-            At Naturopathic Harmony, we believe in the body&apos;s innate ability to heal. We offer a compassionate and comprehensive approach to health, guiding you towards balance and vitality through personalized care.
+            At Aarogyadhama, we believe in the body&apos;s innate ability to heal. We offer a compassionate and comprehensive approach to health, guiding you towards balance and vitality through personalized care.
           </p>
         </div>
 

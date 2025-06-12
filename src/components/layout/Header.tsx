@@ -28,7 +28,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-2" onClick={() => setIsSheetOpen(false)}>
           <Leaf className="h-7 w-7 text-primary" />
           <span className="font-headline text-2xl font-semibold text-foreground">
-            Naturopathic Harmony
+            Aarogyadhama
           </span>
         </Link>
 

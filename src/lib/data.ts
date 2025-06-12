@@ -198,7 +198,7 @@ export const testimonials: Testimonial[] = [
   {
     id: '1',
     name: 'Sarah L.',
-    text: 'Naturopathic Harmony has been a game-changer for my well-being. The personalized Ayurvedic plan helped me manage my digestive issues, and the yoga classes are a perfect way to de-stress. Highly recommend!',
+    text: 'Aarogyadhama has been a game-changer for my well-being. The personalized Ayurvedic plan helped me manage my digestive issues, and the yoga classes are a perfect way to de-stress. Highly recommend!',
     date: '2024-06-10T00:00:00Z',
     image: 'https://placehold.co/100x100.png',
     dataAiHint: 'woman smiling',
@@ -214,7 +214,7 @@ export const testimonials: Testimonial[] = [
   {
     id: '3',
     name: 'Maria P.',
-    text: 'I was new to yoga, but Anya made me feel so comfortable and guided me beautifully. The atmosphere at Naturopathic Harmony is so calming and welcoming. I look forward to my classes every week!',
+    text: 'I was new to yoga, but Anya made me feel so comfortable and guided me beautifully. The atmosphere at Aarogyadhama is so calming and welcoming. I look forward to my classes every week!',
     date: '2024-07-01T00:00:00Z',
     image: 'https://placehold.co/100x100.png',
     dataAiHint: 'person happy',
@@ -279,7 +279,7 @@ export const classesInfo: ClassInfo[] = [
 export const founderInfo = {
   name: "Dr. Alistair Finch",
   title: "Founder & Chief Wellness Officer",
-  story: "Dr. Alistair Finch founded Naturopathic Harmony with a vision to create a sanctuary where ancient healing wisdom meets modern understanding of health. With a background in both conventional medicine and extensive studies in naturopathy, Ayurveda, and yoga, Dr. Finch witnessed firsthand the limitations of a purely symptomatic approach to illness. He believed that true well-being arises from addressing the root causes of imbalance and nurturing the body's innate capacity to heal. \n\nNaturopathic Harmony began as a small clinic in 2010, driven by Dr. Finch's passion for personalized, holistic care. His commitment to creating a supportive, educational, and tranquil environment quickly resonated with the community. Over the years, the center has grown, attracting a team of like-minded practitioners dedicated to empowering individuals on their unique paths to health and vitality. Our philosophy remains rooted in Dr. Finch's original principles: respect for nature, individualized care, and the harmonious integration of mind, body, and spirit.",
+  story: "Dr. Alistair Finch founded Aarogyadhama with a vision to create a sanctuary where ancient healing wisdom meets modern understanding of health. With a background in both conventional medicine and extensive studies in naturopathy, Ayurveda, and yoga, Dr. Finch witnessed firsthand the limitations of a purely symptomatic approach to illness. He believed that true well-being arises from addressing the root causes of imbalance and nurturing the body's innate capacity to heal. \n\nAarogyadhama began as a small clinic in 2010, driven by Dr. Finch's passion for personalized, holistic care. His commitment to creating a supportive, educational, and tranquil environment quickly resonated with the community. Over the years, the center has grown, attracting a team of like-minded practitioners dedicated to empowering individuals on their unique paths to health and vitality. Our philosophy remains rooted in Dr. Finch's original principles: respect for nature, individualized care, and the harmonious integration of mind, body, and spirit.",
   image: "https://placehold.co/400x400.png",
   dataAiHint: "founder portrait wise"
 };

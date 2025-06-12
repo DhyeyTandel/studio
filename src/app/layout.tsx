@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import AppLayout from '@/components/layout/AppLayout';
 
 export const metadata: Metadata = {
-  title: 'Naturopathic Harmony',
+  title: 'Aarogyadhama',
   description: 'Your sanctuary for holistic wellness and natural healing.',
 };
 

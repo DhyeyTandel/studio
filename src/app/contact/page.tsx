@@ -61,7 +61,7 @@ export default function ContactPage() {
          <div className="rounded-lg shadow-xl overflow-hidden border-4 border-primary/20">
             <Image
                 src={contactDetails.mapImage}
-                alt="Map showing location of Naturopathic Harmony"
+                alt="Map showing location of Aarogyadhama"
                 width={1200}
                 height={400}
                 className="w-full object-cover"

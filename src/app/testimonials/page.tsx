@@ -10,7 +10,7 @@ export default function TestimonialsPage() {
     <div className="space-y-12">
       <PageHeader
         title="Words from Our Community"
-        subtitle="Hear what our valued clients have to say about their experiences at Naturopathic Harmony. Their journeys are a testament to the healing and balance we strive to foster."
+        subtitle="Hear what our valued clients have to say about their experiences at Aarogyadhama. Their journeys are a testament to the healing and balance we strive to foster."
         Icon={MessagesSquare}
       />
       

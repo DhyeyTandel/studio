@@ -9,7 +9,7 @@ export default function AboutPage() {
     <div className="space-y-16">
       <PageHeader
         title="Our Story & Philosophy"
-        subtitle="Discover the heart behind Naturopathic Harmony and our commitment to your well-being."
+        subtitle="Discover the heart behind Aarogyadhama and our commitment to your well-being."
         Icon={BookHeart}
       />
 
