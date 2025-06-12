@@ -15,11 +15,11 @@ export default function AboutPage() {
       />
 
       <section className="mb-12">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div className="grid md:grid-cols-2 gap-8 items-start"> {/* Changed items-center to items-start for better alignment with longer text */}
           <div className="md:order-last">
             <Image
               src={aarogyadhamaStory.image}
-              alt="Aarogyadhama Center"
+              alt="Aarogyadhama Center History"
               width={600}
               height={400}
               className="rounded-lg shadow-xl mx-auto object-cover aspect-[3/2]"
@@ -27,6 +27,7 @@ export default function AboutPage() {
             />
           </div>
           <div>
+            <h2 className="text-3xl font-headline text-primary mb-6">{aarogyadhamaStory.title}</h2>
             {aarogyadhamaStory.content.split('\n\n').map((paragraph, index) => (
               <p key={index} className="text-foreground/80 mb-4 leading-relaxed">{paragraph}</p>
             ))}
@@ -121,5 +122,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-    

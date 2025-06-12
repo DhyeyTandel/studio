@@ -60,6 +60,13 @@ export interface ClassInfo {
   dataAiHint: string;
 }
 
+export interface AarogyadhamaStory {
+  title: string;
+  content: string;
+  image: string;
+  dataAiHint: string;
+}
+
 export const services: Service[] = [
   {
     id: 'yoga',
@@ -466,8 +473,9 @@ export const classesInfo: ClassInfo[] = [
   }
 ];
 
-export const aarogyadhamaStory = {
-  content: "Aarogyadhama was founded with a vision to create a sanctuary where ancient healing wisdom meets modern understanding of health. Our founders, Dr. R Nagarathana and Padmashri Dr. H R Nagendra, envisioned a place driven by a passion for personalized, holistic care. The commitment from the outset has been to create a supportive, educational, and tranquil environment, which quickly resonated with the community. \n\nSince its inception, Aarogyadhama has grown, attracting a team of like-minded practitioners dedicated to empowering individuals on their unique paths to health and vitality. Our philosophy remains rooted in the founding principles: respect for nature, individualized care, and the harmonious integration of mind, body, and spirit.",
+export const aarogyadhamaStory: AarogyadhamaStory = {
+  title: "SVYASA - Health Aarogyadhama History",
+  content: "Arogyadhama is an integrative medicine hospital with a 350-bed inpatient treatment facility. We integrate Yoga, Ayurveda, Naturopathy, Acupuncture, Physiotherapy, Psychotherapy, and Diet and nutrition. This is essentially envisioned to prevent and treat modern Non-Communicable Diseases, long-term rehabilitation and to promote Positive Health for the last 40 years. We have treated more than 30000 patients and provide a mantra for healthy and stress free living.\n\nVYASA is the short form of Vivekananda Yoga Anusandhana Samsthana, the name used till 2002. From 1986 to 2000 it was called as Vivekananda Kendra Yoga Anusandhana Samsthana (VK Yogas). Before that, it was Vivekananda Kendra Yoga Cikitsa Tatha Anusandhana Samiti (VK YOCTAS from 1981 to 1986). VYASA is the mother organization of S-VYASA. S-VYASA (Swami Vivekananda Yoga Anusandhana Samsthana) acquired the status of Deemed to be University in 2002. As per the UGC 2010 regulations, S-VYASA statutes have been amended.\n\nThe University is located in the suburbs of Bengaluru, in a rural setting quite adjacent to Bannerghatta hills, 35 Kms from Bengaluru Central. Far from the madding crowd, the main campus of the University \"Prasanthi Kutiram\", is the abode of peace and spiritual serenity. The educational system in S-VYASA is holistic - based on the Consciousness Oriented Approach of Yoga systems and Spiritual lore. It is not merely bread-earning educational system but a personality - developing and world - building tool through yoga. The University has well defined Vision, Mission and objectives.\n\nYoga is verifiable by scientific research, as it is no dogma or blind faith. Sri Eknathji Ranade - the Founder of Vivekananda Rock Memorial and Vivekananda Kendra, Kanyakumari, with a Vision for future, inspired physicians to start a research wing of Yoga which grew as VKYOGAS (now WASA), \"one of the four premier Yoga institutions in the country\" in the words of Y N Chaturvedi, Secretary, University Grants Commission (Reference letter No. F.8-1/93(Secy.) dated August 10, 1993). Starting from Yoga Therapy Research, the Yoga Foundation has spread its wings to several dimensions of modern life.\n\nOver the years, S-VYASA has been substantiating scientific validation through Research. S-VYASA has successfully published more than 400 research papers all of which have been indexed in PubMed/Medline or Psychlit/Psychinfo databases. S-VYASA was recognized as a Centre of Advanced Research (CAR) in Yoga and Neurophysiology accredited by the Indian Council of Medical Research (ICMR) from 2007 to 2012.\n\nS-VYASA in recent years has been able to take a leadership role to synergise the wisdom base of all major Yoga Institutions of the country for drafting a common Yoga Protocol of 30 kms for International Yoga day on June 21, 2015 organized by the Ministry of AYUSH. Similar support and leadership role in framing syllabus for NCTE, NCERT and UGC at UG and PG levels was done by S-VYASA coordinating major yoga institutional experts in the country.\n\nS-VYASA in collaboration with VYASA has been organizing Yoga Therapy camps for Diabetes control all over the country and in 2015 during the first International Day of Yoga 56000 diabetic patients were treated in 7500 week-long camps. Based on this experience, we are confident of playing a leadership role in the National Committee formed by the Ministry of AYUSH, for controlling Diabetes throughout the country. We also solicit the support of all other Ministries and all Yoga NGOs in the country for the fulfilment in this noble endeavour.",
   image: "https://placehold.co/600x400.png",
   dataAiHint: "serene wellness center"
 };
@@ -496,5 +504,3 @@ export const contactDetails = {
   mapImage: "https://placehold.co/800x400.png",
   mapDataAiHint: "map location city"
 };
-
-    
