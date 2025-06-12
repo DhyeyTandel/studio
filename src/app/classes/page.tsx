@@ -26,7 +26,7 @@ export default function ClassesPage() {
         Icon={CalendarDays}
       />
 
-      <div className="grid md:grid-cols-3 gap-8 items-start">
+      <div className="flex flex-col space-y-8 md:space-y-0 md:grid md:grid-cols-3 md:gap-8 md:items-start">
         <div className="md:col-span-1 space-y-6">
           <h2 className="text-2xl font-headline text-primary">Select a Date</h2>
           <Card className="shadow-lg">
