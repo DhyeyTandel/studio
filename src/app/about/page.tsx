@@ -15,21 +15,21 @@ export default function AboutPage() {
       />
 
       <section className="mb-12">
-        <div className="grid md:grid-cols-2 gap-8 items-start"> {/* Changed items-center to items-start for better alignment with longer text */}
-          <div className="md:order-last">
+        <div className="flex flex-col items-center">
+          <div className="mb-8 w-full max-w-3xl">
             <Image
               src={aarogyadhamaStory.image}
               alt="Aarogyadhama Center History"
-              width={600}
-              height={400}
-              className="rounded-lg shadow-xl mx-auto object-cover aspect-[3/2]"
+              width={700} 
+              height={466} 
+              className="rounded-lg shadow-xl mx-auto object-cover aspect-[3/2] w-full"
               data-ai-hint={aarogyadhamaStory.dataAiHint}
             />
           </div>
-          <div>
-            <h2 className="text-3xl font-headline text-primary mb-6">{aarogyadhamaStory.title}</h2>
+          <div className="w-full max-w-3xl mx-auto text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl font-headline text-primary mb-6 text-center">{aarogyadhamaStory.title}</h2>
             {aarogyadhamaStory.content.split('\n\n').map((paragraph, index) => (
-              <p key={index} className="text-foreground/80 mb-4 leading-relaxed">{paragraph}</p>
+              <p key={index} className="text-foreground/80 mb-4 leading-relaxed text-left">{paragraph}</p>
             ))}
           </div>
         </div>
